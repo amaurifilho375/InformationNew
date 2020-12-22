@@ -1,0 +1,33 @@
+<h2 style="padding-left: 393px; background-color: #2b6cb0; margin-top: 0px  "> login </h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div style="background-color:  #81e6d9; margin-top: -6px; padding-bottom: 40px" >
+ 
+      <div class="form-group" style="padding-left: 160px; padding-top: 190px; padding-right: 250px  ">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, class: 'form-control' , autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="form-group" style="padding-left: 160px; padding-right: 250px;   ">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, class: 'form-control' , autofocus: true, autocomplete: "current-password" %>
+      </div>
+
+
+      <% if devise_mapping.rememberable? %>
+        <div style="padding-left: 160px">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <div class="actions" style="padding-left: 160px;padding-top: 20px">
+        <%= f.submit "Entrar" %>
+      </div>
+    <% end %>
+
+    <div style="padding-left: 160px; padding-top: 20px">
+      <%= render "devise/shared/links" %>
+    </div >
+
+</div>

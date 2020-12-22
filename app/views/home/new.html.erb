@@ -1,0 +1,39 @@
+ 
+<h2 style="margin-top: -5px;margin-left: 333px;font-weight: bold; font-size: 25px"> PAGINA DE CRIACAO DE USUARIO<h2>
+
+<%= form_for :@user , url: home_show_create_path , html: {method: "get", role: "form", class: "col-md-8", style: "padding-left: 0px;"} do |a| %>
+    <div class="form-group" style= "width: 350px; padding-left: 15px">
+       <%= a.label :email, "email* :",  class: 'required', style:"font-size: 15px;" %>
+        <%= a.text_field :email, class: "form-control" %>
+    </div>
+
+    <div class="form-group" style= "width: 350px; padding-left: 15px">
+       <%= a.label :password, "senha* :",  class: 'required', style:"font-size: 15px;" %>
+        <%= a.text_field :password, class: "form-control" %>
+     </div>
+
+     <div class="form-group" style= "width: 350px; padding-left: 15px">
+       <%= a.label :password_confirmation, "confirmacao de senha* :",  class: 'required', style:"font-size: 15px;" %>
+       <%= a.text_field :password_confirmation, class: "form-control" %>
+     </div>
+
+     <div class="form-group" style= "width: 350px; padding-left: 15px">
+        <%= a.label :role, "função (0 para admin ou 1 para comum)  * :",  class: 'required', style:"font-size: 15px;" %>
+        <%= a.text_field :role, class: "form-control" %>
+     </div>
+
+
+     
+     <div class="form-group" style= "width: 350px; padding-left: 15px">
+       <%= a.label :name, "nome* :",  class: 'required', style:"font-size: 15px;" %>
+        <%= a.text_field :name, class: "form-control" %>
+     </div>
+
+
+    <div class="form-group" style="padding-left: 15px" >     
+      <%= a.submit "Criar User", class: "btn btn-primary" %>
+      
+    </div>
+
+
+<% end %>

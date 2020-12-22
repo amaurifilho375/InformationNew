@@ -1,0 +1,55 @@
+<h2> tags search</h2>
+
+
+
+<%- model_class = Report -%>
+<div class="page-header">
+ <h2> Notícias</h2>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      
+      
+      <th><%= model_class.human_attribute_name(:titulo) %></th>
+      <th><%= model_class.human_attribute_name(:rating) %></th>
+      <th><%= model_class.human_attribute_name(:rated) %></th>
+      <th><%= model_class.human_attribute_name(:information) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+     
+        <td><%= report.titulo %></td>
+        <td><%= report.rating %></td>
+        <td><%= report.rated %></td>
+        <td><%= report.information %></td>
+        <td><%= report.created_at %></td>
+        <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      report_path(report), :class => 'btn btn-warning btn-xs' %>
+          
+          
+          <% if policy(@users).index? %>
+              <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                          edit_report_path(report), :class => 'btn btn-default btn-xs' %>
+              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                          report_path(report),
+                          :method => :delete,
+                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                          :class => 'btn btn-xs btn-danger' %>
+        
+          <%end%>               
+        
+         </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_report_path,
+            :class => 'btn btn-primary' %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  comment: MyText
+  lingua: MyString
+  status: 1
+  report: one
+
+two:
+  comment: MyText
+  lingua: MyString
+  status: 1
+  report: two

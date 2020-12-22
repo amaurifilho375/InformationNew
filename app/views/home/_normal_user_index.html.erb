@@ -1,0 +1,64 @@
+<p style="padding-left: 37px; margin-bottom: 1px; font-weight: bolder; font-size: 20px"> noticias :</p>
+
+  <%= form_for :search, url: root_path, html: {method: "get", role: "form", class: "col-md-8", style: "padding-left: 0px;  "} do |f| %>
+
+    
+    <div class="container" >
+
+        <div class="d-flex align-items-end", style="margin-top: -40px;" >
+
+                         
+                <div class="col-md-2" style="margin-top: 5px; padding-left: 17px;">
+                   <%= f.text_field :titulo, class: "form-control", required: "true"  %>
+                </div>
+                <div class="col-md-4" style="margin-top: 5px;  ">  
+                   <%= f.submit "Pesquisar", class: "btn btn-primary " %>
+                </div>
+
+          <div>
+      </div> 
+      
+  <%end%>
+
+<%- model_class = User  -%>
+<div class="page-header">
+  <h2 style="margin-top: 50px">noticias</h2>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      
+      <th><%= model_class.human_attribute_name(:titulo) %></th>
+      <th><%= model_class.human_attribute_name(:informacões) %></th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    <% @report.each do |report| %>
+      <tr>
+        <td><%= report.titulo %></td>
+        <td><%= report.information %></td>
+        
+        
+        
+        <td>
+          <%= link_to t('.comentar', :default => t("helpers.links.comentar")),
+             new_report_comment_path(report.id), :class => 'btn btn-xs btn-success' %>
+            
+          <%= link_to t('.vê comentarios', :default => t("helpers.links.vê comentarios")),
+             report_comments_path(report.id), :class => 'btn btn-xs btn-info' %>  
+          
+             
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<div class="col-md-2" style="margin-top: 23px; padding-left: 5px; margin-right: 600px  ">       
+    <%= link_to "Criar Usuario", home_new_path,  class: "btn btn-primary" %>  
+</div>
+
+
+

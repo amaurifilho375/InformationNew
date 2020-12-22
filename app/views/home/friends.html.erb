@@ -1,0 +1,38 @@
+<%- model_class = User  -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= model_class.human_attribute_name(:funcao) %></th>
+      <th><%=t '.ação', :default => t("helpers.ação") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @friends.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.name %></td>
+        <td><%= user.role %></td>
+        
+        
+        <td>
+          <%= link_to t('.exibir', :default => t("helpers.links.exibir")),
+                  home_show_path(user.id), :class => 'btn btn-xs btn-success' %>
+          
+          
+        
+          </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+

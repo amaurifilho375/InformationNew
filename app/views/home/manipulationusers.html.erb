@@ -1,0 +1,61 @@
+<div class="col-md-2" style="margin-top: 0px; padding-left: 740px;  ">       
+    <%= link_to "Criar Usuario", home_new_path,  class: "btn btn-primary" %>  
+</div>
+
+
+
+
+
+
+<%- model_class = User  -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= model_class.human_attribute_name(:funcao) %></th>
+      <th><%=t '.ação', :default => t("helpers.ação") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.name %></td>
+        <td><%= user.role %></td>
+        
+        
+        <td>
+          <%= link_to t('.exibir', :default => t("helpers.links.exibir")),
+                  home_show_path(user.id), :class => 'btn btn-xs btn-success' %>
+          
+          
+          <% if policy(@users).index? %>        
+                  
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                home_edit_path(user.id), :class => 'btn btn-xs btn-warning' %> 
+           
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                show_destroy_path(user.id),
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Tem certeza que deseja excluir?')) },
+                :class => 'btn btn-xs btn-danger' %>    
+        
+          <%end%>
+      
+          </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_report_path,
+            :class => 'btn btn-primary' %>

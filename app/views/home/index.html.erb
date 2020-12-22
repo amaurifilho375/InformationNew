@@ -1,0 +1,12 @@
+
+<p2 style=" font-size: 17px; margin-top:5px; margin-left: 1100px; background-color: #05ffb0;"> <%= link_to "Sair",destroy_user_session_path, method: :delete %> </p2>
+                            
+<% if policy(@users).index? %>
+     
+    <%= render partial: "admin_user_index" %>
+
+   
+        
+ <%else%>                    
+       <%= render partial: "normal_user_index" %>
+<%end%>
